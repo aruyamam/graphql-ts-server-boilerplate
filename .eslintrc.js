@@ -7,5 +7,8 @@ module.exports = {
    parserOptions: {
       ecmaVersion: 2018,
       sourceType: 'module'
+   },
+   rules: {
+      '@typescript-eslint/explicit-function-return-type': 'off'
    }
 };
