@@ -9,6 +9,7 @@
       "@types/uuid": "^3.4.4",
       "@typescript-eslint/eslint-plugin": "^1.9.0",
       "@typescript-eslint/parser": "^1.9.0",
+      "cross-env": "^5.2.0",
       "eslint": "^5.16.0",
       "eslint-config-prettier": "^4.3.0",
       "eslint-plugin-prettier": "^3.1.0",
@@ -31,8 +32,9 @@
       "uuid": "^3.3.2"
    },
    "scripts": {
-      "start": "nodemon --exec ts-node src/index.ts",
-      "test": "jest",
+      "start": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
+      "test-server": "cross-env NODE_ENV=test ts-node src/index.ts",
+      "test": "cross-env NODE_ENV=test jest",
       "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
    }
 }
