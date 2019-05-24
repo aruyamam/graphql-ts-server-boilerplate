@@ -7,6 +7,7 @@
       "@types/jest": "^24.0.13",
       "@types/node": "^12.0.2",
       "@types/uuid": "^3.4.4",
+      "@types/yup": "^0.26.13",
       "@typescript-eslint/eslint-plugin": "^1.9.0",
       "@typescript-eslint/parser": "^1.9.0",
       "cross-env": "^5.2.0",
@@ -30,7 +31,8 @@
       "graphql-yoga": "^1.17.4",
       "pg": "^7.11.0",
       "reflect-metadata": "^0.1.13",
-      "typeorm": "0.2.17"
+      "typeorm": "0.2.17",
+      "yup": "^0.27.0"
    },
    "scripts": {
       "start": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
