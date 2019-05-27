@@ -9,7 +9,7 @@ import {
 } from './errorMessages';
 import { createTypeormConn } from '../../utils/createTypeormConn';
 
-const email = 'bob@bob.com';
+const email = 'tom@bob.com';
 const password = 'dkfajfdakl';
 
 const mutation = (e: string, p: string) => `
@@ -53,7 +53,7 @@ describe('Register user', () => {
    });
 
    it('check bad email', async () => {
-      const response: any = await request(
+      const response3: any = await request(
          process.env.TEST_HOST as string,
          mutation('b', password)
       );
@@ -62,7 +62,7 @@ describe('Register user', () => {
       //    path: 'email',
       //    message: emailNotLongEnough
       // });
-      expect(response).toEqual({
+      expect(response3).toEqual({
          register: [
             {
                path: 'email',
@@ -77,11 +77,11 @@ describe('Register user', () => {
    });
 
    it('check bad password', async () => {
-      const response: any = await request(
+      const response4: any = await request(
          process.env.TEST_HOST as string,
          mutation(email, 'ad')
       );
-      expect(response).toEqual({
+      expect(response4).toEqual({
          register: [
             {
                path: 'password',
@@ -92,11 +92,11 @@ describe('Register user', () => {
    });
 
    it('catch bad email and bad password', async () => {
-      const response: any = await request(
+      const response5: any = await request(
          process.env.TEST_HOST as string,
          mutation('df', 'ad')
       );
-      expect(response).toEqual({
+      expect(response5).toEqual({
          register: [
             {
                path: 'email',
