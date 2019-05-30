@@ -31,6 +31,7 @@
    },
    "dependencies": {
       "@gql2ts/from-schema": "^1.10.1",
+      "axios": "^0.18.0",
       "bcryptjs": "^2.4.3",
       "connect-redis": "^3.4.1",
       "dotenv": "^8.0.0",
@@ -52,7 +53,7 @@
    },
    "scripts": {
       "start": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
-      "test": "cross-env NODE_ENV=test jest --watch",
+      "test": "cross-env NODE_ENV=test jest --watch --runInBand",
       "gen-schema-types": "ts-node src/scripts/createTypes.ts"
    }
 }

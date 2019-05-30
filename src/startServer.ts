@@ -1,8 +1,10 @@
+import 'reflect-metadata';
+import 'dotenv/config';
 import { GraphQLServer } from 'graphql-yoga';
 import * as session from 'express-session';
 import * as connectRedis from 'connect-redis';
-import { redis } from './redis';
 
+import { redis } from './redis';
 import { createTypeormConn } from './utils/createTypeormConn';
 import { confirmEmail } from './routes/confirmEmail';
 import { genSchema } from './utils/genSchema';
@@ -38,7 +40,10 @@ export const startServer = async () => {
 
    const cors = {
       credentials: true,
-      origin: 'http://localhost:3000'
+      origin:
+         process.env.NODE_ENV === 'test'
+            ? '*'
+            : (process.env.FRONTEND_HOST as string)
    };
 
    server.express.get('/confirm/:id', confirmEmail);
