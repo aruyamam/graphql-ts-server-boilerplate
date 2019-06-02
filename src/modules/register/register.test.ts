@@ -1,5 +1,3 @@
-import { request } from 'graphql-request';
-
 import { User } from '../../entity/User';
 import {
    duplicateEmail,
@@ -47,7 +45,7 @@ describe('Register user', () => {
    it('check bad email', async () => {
       const client = new TestClient(process.env.TEST_HOST as string);
       const response3 = await client.register('b', password);
-      expect(response3).toEqual({
+      expect(response3.data).toEqual({
          register: [
             {
                path: 'email',
@@ -64,7 +62,7 @@ describe('Register user', () => {
    it('check bad password', async () => {
       const client = new TestClient(process.env.TEST_HOST as string);
       const response4: any = await client.register(email, 'ad');
-      expect(response4).toEqual({
+      expect(response4.data).toEqual({
          register: [
             {
                path: 'password',
@@ -77,7 +75,7 @@ describe('Register user', () => {
    it('catch bad email and bad password', async () => {
       const client = new TestClient(process.env.TEST_HOST as string);
       const response5: any = await client.register('df', 'ad');
-      expect(response5).toEqual({
+      expect(response5.data).toEqual({
          register: [
             {
                path: 'email',
