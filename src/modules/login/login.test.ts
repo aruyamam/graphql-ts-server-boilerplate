@@ -1,15 +1,17 @@
+import * as faker from 'faker';
+
 import { invalidLogin, confirmEmailError } from './errorMessages';
 import { User } from '../../entity/User';
-import { createTypeormConn } from '../../utils/createTypeormConn';
 import { Connection } from 'typeorm';
 import { TestClient } from '../../utils/TestClient';
+import { createTestConn } from '../../testUtils/createTestConn';
 
-const email = 'tom@bob.com';
-const password = 'dkfajfdakl';
+const email = faker.internet.email();
+const password = faker.internet.password();
 
 let conn: Connection;
 beforeAll(async () => {
-   conn = await createTypeormConn();
+   conn = await createTestConn();
 });
 afterAll(async () => {
    conn.close();
@@ -47,7 +49,12 @@ describe('login', () => {
 
       await User.update({ email }, { confirmed: true });
 
-      await loginExpectError(client, email, 'dflafjdaljalf', invalidLogin);
+      await loginExpectError(
+         client,
+         email,
+         faker.internet.password(),
+         invalidLogin
+      );
 
       const response = await client.login(email, password);
 
