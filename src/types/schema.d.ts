@@ -22,12 +22,8 @@ export namespace GQL {
 
    interface IQuery {
       __typename: 'Query';
-      dummy2: string | null;
-      bye2: string | null;
-      dummy: string | null;
-      me: IUser | null;
-      bye: string | null;
       hello: string;
+      me: IUser | null;
    }
 
    interface IHelloOnQueryArguments {
@@ -50,7 +46,7 @@ export namespace GQL {
    }
 
    interface ISendForgotPasswordEmailOnMutationArguments {
-      email?: string | null;
+      email: string;
    }
 
    interface IForgotPasswordChangeOnMutationArguments {
