@@ -7,6 +7,7 @@ import { createTestConn } from '../../../testUtils/createTestConn';
 
 let userId: string;
 let conn: Connection;
+faker.seed(process.hrtime()[1]);
 const email = faker.internet.email();
 const password = faker.internet.password();
 
